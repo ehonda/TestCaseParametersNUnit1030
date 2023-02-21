@@ -1,14 +1,15 @@
 # Demo for a NUnit1030 false positive
 
-To produce the false positive, run the following from the root directory (file paths replaced by `<...>`):
+To produce the false positive, run the following from the root directory, to enable `NUnit1030` and then run the tests
+(file paths replaced by `<...>` in sample output):
 
 ```console
 $ sed -i 's/^#pragma/\/\/ #pragma/g' TestCaseParametersNUnit1030/Tests.cs && dotnet test -v q
 <error location>: error NUnit1030: The TestCaseSource provides type 'NUnit.Framework.Internal.TestCaseParameters', but the Test method expects type 'int' for parameter 'n' <csproj path>
 ```
 
-To demonstrate that tests run fine if we disable `NUnit1030`, run the following from the root directory
-(file paths replaced by `<...>`):
+To demonstrate that tests run fine if we disable `NUnit1030`, run the following from the root directory, to disable
+`NUnit1030` and then run the tests (file paths replaced by `<...>` in sample output):
 
 ```console
 $ sed -i 's/\/\/ #pragma/#pragma/g' TestCaseParametersNUnit1030/Tests.cs && dotnet test -v q
